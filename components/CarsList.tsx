@@ -1,6 +1,12 @@
-import { getCars } from "@/app/data/getCars"
+'use client';
+
+import { useMemo, useState } from 'react';
 import Link from "next/link";
+import OrderBy from '@/components/OrderBy';
+import FilterBy from './FilterBy';
 import { Button } from "@/components/ui/button";
+import { getCars } from '@/app/data/getCars';
+import useSWR from 'swr';
 
 type Car = {
     id: number;
@@ -12,13 +18,69 @@ type Car = {
     photo: string;
 };
 
-export default async function CarsList() {
-    const cars: Car[] = await getCars();
+// type SortOption = "" | "asc" | "desc" | "new" | "old";
+// type FilterOption = "" | "Autos" | "Pickups y Comerciales" | "SUVs y Crossovers";
+
+const FILTER_RULES: { [key: string]: string[] | undefined } = {
+    "Autos": ["Sedan", "Hatchback"],
+    "Pickups y Comerciales": ["Pickups y Comerciales"],
+    "SUVs y Crossovers": ["SUVs"],
+};
+
+export default function CarsList() {
+    const { data: cars, error, isLoading } = useSWR<Car[]>("cars", getCars);
+    const [sortBy, setSortBy] = useState<string>("");
+    const [filterBy, setFilterBy] = useState<string>("");
+
+    const filteredAndSortedCars = useMemo(() => {
+        if (!cars) return [];
+
+        let filtered = [...cars];
+
+        if (filterBy !== "Todos") {
+            filtered = filtered.filter(car => {
+                // Obtiene los segmentos válidos para el filtro actual
+                const validSegments = FILTER_RULES[filterBy];
+
+                // Si hay regla, verifica si el auto está incluido. Si no, true 
+                return validSegments ? validSegments.includes(car.segment) : true;
+            });
+        }
+
+        switch (sortBy) {
+            case "desc":
+                filtered.sort((a, b) => a.price - b.price);
+                break;
+            case "asc":
+                filtered.sort((a, b) => b.price - a.price);
+                break;
+            case "new":
+                filtered.sort((a, b) => b.year - a.year);
+                break;
+            case "old":
+                filtered.sort((a, b) => a.year - b.year);
+                break;
+            default:
+                break;
+        }
+
+        return filtered;
+    }, [sortBy, filterBy, cars]);
+
+    if (isLoading) return <div className="text-center py-10">Cargando autos...</div>;
+    if (error) return <div className="text-center py-10">Error al cargar los autos.</div>;
+    if (!cars || cars.length === 0) return <div className="text-center py-10">No hay autos disponibles.</div>;
+
     return (
         <>
+            <div className="py-5 border-b-2 flex items-center justify-between gap-4">
+                <FilterBy value={filterBy} onValueChange={setFilterBy} />
+                <OrderBy value={sortBy} onValueChange={setSortBy} /> 
+            </div>
+
             <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 my-5 py-3">
-                {cars.map((car) => (
-                    <Link href={`/cars/${car.id}`} key={car.id} className="group relative flex flex-col cursor-pointer">
+                {filteredAndSortedCars.map((car) => (
+                    <Link href="#" key={car.id} className="group relative flex flex-col cursor-pointer">
                         <h3 className="text-center text-[28px]/[30px] font-bold mt-3 group-hover:text-[#EB0A1E]">{car.name}</h3>
 
                         <div className="flex gap-3 justify-center text-sm text-muted-foreground mt-2">

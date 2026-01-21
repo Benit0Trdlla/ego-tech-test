@@ -7,24 +7,28 @@ import {
   SelectValue,
   SelectSeparator
 } from "@/components/ui/select"
+interface OrderByProps {
+    value: string;
+    onValueChange: (value: string) => void;
+}
 
-export function OrderBy() {
+export function OrderBy({ value, onValueChange }: OrderByProps) {
   return (
-    <Select>
-      <SelectTrigger className="w-full max-w-36 font-bold border-transparent">
+    <Select value={value} onValueChange={onValueChange}>
+      <SelectTrigger className="max-w-36 font-bold border-transparent">
         <SelectValue placeholder="Ordenar por" defaultValue="Nada" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
           <SelectItem value="Nada">Nada</SelectItem>
           <SelectSeparator />
-          <SelectItem value="desc">De Menor a Mayor</SelectItem>
+          <SelectItem value="desc">De <strong>menor</strong> a <strong>mayor</strong>precio</SelectItem>
           <SelectSeparator />
-          <SelectItem value="asc">De Mayor a Menor</SelectItem>
+          <SelectItem value="asc">De <strong>mayor</strong> a<strong>menor</strong> precio</SelectItem>
           <SelectSeparator />
-          <SelectItem value="new">Más nuevos primero</SelectItem>
+          <SelectItem value="new">Más <strong>nuevos</strong> primero</SelectItem>
           <SelectSeparator />
-          <SelectItem value="old">Más viejos primero</SelectItem>
+          <SelectItem value="old">Más <strong>viejos</strong> primero</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>

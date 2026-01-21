@@ -1,5 +1,5 @@
 "use client"
-import { Fragment, useState } from "react"
+import { Fragment } from "react"
 import { Button } from "@/components/ui/button"
 import {
     Select,
@@ -18,9 +18,15 @@ const categories: string[] = [
     "SUVs y Crossovers"
 ]
 
-export function FilterBy() {
-    const [activeCategory, setActiveCategory] = useState<string>(" ")
+interface FilterByProps {
+    value: string;
+    onValueChange: (value: string) => void;
+}
 
+export function FilterBy({ value, onValueChange }: FilterByProps) {
+    const handleClick = (category: string) => {
+        onValueChange(category)
+    }
     return (
         <>
             <div className="hidden md:flex gap-3 items-center">
@@ -31,8 +37,8 @@ export function FilterBy() {
                     {categories.map((category) => (
                         <Button
                             key={category}
-                            onClick={() => setActiveCategory(category)}
-                            variant={activeCategory === category ? "secondary" : "ghost"}
+                            onClick={() => handleClick(category)}
+                            variant={value === category ? "secondary" : "ghost"}
                             className="px-4 py-2"
                         >
                             {category}
@@ -41,8 +47,8 @@ export function FilterBy() {
                 </div>
             </div>
             <div className="md:hidden">
-                <Select onValueChange={setActiveCategory}>
-                    <SelectTrigger className="w-full max-w-50 font-bold border-transparent">
+                <Select value={value} onValueChange={onValueChange}>
+                    <SelectTrigger className="max-w-20 font-bold border-transparent">
                         <SelectValue placeholder="Filtrar por:" />
                     </SelectTrigger>
                     <SelectContent>
@@ -50,7 +56,9 @@ export function FilterBy() {
                             {categories.map((category) => (
                                 <Fragment key={category}>
                                     <SelectItem value={category}>
-                                        {category}
+                                        <small>
+                                            {category}
+                                        </small>
                                     </SelectItem>
                                     <SelectSeparator />
                                 </Fragment>
