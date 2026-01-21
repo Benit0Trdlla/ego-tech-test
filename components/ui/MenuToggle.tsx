@@ -13,7 +13,7 @@ const MenuToggle = () => (
       <SheetHeader>
         <SheetTitle className="text-[14px] mr-7">Cerrar</SheetTitle>
       </SheetHeader>
-      <nav className="flex flex-col gap-4 py-2 px-4 mr-6">
+      <nav className="flex flex-col gap-4 py-2 px-4 mr-6 overflow-y-auto max-h-[calc(100vh-100px)]">
         <a className="font-medium text-sm hover:underline text-[20px]" href="#">
           Modelos
         </a>
