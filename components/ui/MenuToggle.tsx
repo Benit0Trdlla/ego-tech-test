@@ -11,20 +11,59 @@ const MenuToggle = () => (
     </SheetTrigger>
     <SheetContent side="right">
       <SheetHeader>
-        <SheetTitle>Menu</SheetTitle>
+        <SheetTitle className="text-[14px] mr-7">Cerrar</SheetTitle>
       </SheetHeader>
-      <nav className="flex flex-col gap-4 p-4">
-        <a className="font-medium text-sm hover:underline" href="#">
-          Home
+      <nav className="flex flex-col gap-4 py-2 px-4 mr-6">
+        <a className="font-medium text-sm hover:underline text-[20px]" href="#">
+          Modelos
         </a>
-        <a className="font-medium text-sm hover:underline" href="#">
-          Products
+        <a className="font-medium text-sm hover:underline text-[20px]" href="#">
+          Servicios y Accesorios
         </a>
-        <a className="font-medium text-sm hover:underline" href="#">
-          About
+        <a className="font-medium text-sm hover:underline text-[20px]" href="#">
+          Financiación
         </a>
-        <a className="font-medium text-sm hover:underline" href="#">
-          Contact
+        <a className="font-medium text-sm hover:underline text-[20px]" href="#">
+          Reviews y Comunidad
+        </a>
+        <hr />
+        <a className="font-medium text-sm hover:underline text-[20px]" href="#">
+          Toyota Mobility Service
+        </a>
+        <a className="font-medium text-sm hover:underline text-[20px]" href="#">
+          Toyota Gazoo Racing
+        </a>
+        <a className="font-medium text-sm hover:underline text-[20px]" href="#">
+          Toyota Híbridos
+        </a>
+        <hr />
+        <a className="font-medium text-sm hover:underline text-[20px]" href="#">
+          Concesionarios
+        </a>
+        <a className="font-medium text-sm hover:underline text-[20px]" href="#">
+          Test Drive
+        </a>
+        <a className="font-medium text-sm hover:underline text-[20px]" href="#">
+          Contacto
+        </a>
+        <hr />
+        <a className="font-medium text-sm hover:underline text-[20px]" href="#">
+          Actividades
+        </a>
+        <a className="font-medium text-sm hover:underline text-[20px]" href="#">
+          Servicios al Cliente
+        </a>
+        <a className="font-medium text-sm hover:underline text-[20px]" href="#">
+          Ventas Especiales
+        </a>
+        <a className="font-medium text-sm hover:underline text-[20px]" href="#">
+          Innovación
+        </a>
+        <a className="font-medium text-sm hover:underline text-[20px]" href="#">
+          Prensa
+        </a>
+        <a className="font-medium text-sm hover:underline text-[20px]" href="#">
+          Acerca de...
         </a>
       </nav>
     </SheetContent>
