@@ -48,7 +48,7 @@ export function FilterBy({ value, onValueChange }: FilterByProps) {
             </div>
             <div className="md:hidden">
                 <Select value={value} onValueChange={onValueChange}>
-                    <SelectTrigger className="max-w-20 font-bold border-transparent">
+                    <SelectTrigger className="max-w-40 font-bold border-transparent">
                         <SelectValue placeholder="Filtrar por:" />
                     </SelectTrigger>
                     <SelectContent>

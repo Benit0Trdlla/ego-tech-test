@@ -15,7 +15,7 @@ interface OrderByProps {
 export function OrderBy({ value, onValueChange }: OrderByProps) {
   return (
     <Select value={value} onValueChange={onValueChange}>
-      <SelectTrigger className="max-w-40 font-bold border-transparent">
+      <SelectTrigger className="max-w-60 font-bold border-transparent">
         <SelectValue placeholder="Ordenar por" defaultValue="Nada" />
       </SelectTrigger>
       <SelectContent>
