@@ -2,8 +2,10 @@ import Image from "next/image"
 import { getCar } from "@/app/data/getCar"
 import CarouselSizes from "@/components/Carrousel/Carrousel";
 
-type CarCarouselItem = {
+export type CarCarouselItem = {
+  name?: string;
   title: string;
+  description?: string;
   content: string;
   image: string;
 };
@@ -12,15 +14,15 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const { slug } = await params
   const car = await getCar({ id: Number(slug) });
   
-  const cleanHTML = (html) => html.replace(/<[^>]*>/g, '');
+  const cleanHTML = (html : string) => html.replace(/<[^>]*>/g, '');
 
-  const features = car.model_features.map(item => ({
+  const features = car.model_features.map((item : CarCarouselItem) => ({
     title: item.name,
     content: item.description,
     image: item.image,
   }));
 
-  const highlights = car.model_highlights.map(item => ({
+  const highlights = car.model_highlights.map((item : CarCarouselItem) => ({
     title: item.title,
     content: cleanHTML(item.content),
     image: item.image,
