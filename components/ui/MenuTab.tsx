@@ -13,14 +13,13 @@ export const MenuTab = () => {
     return (
         <nav className="gap-5 flex-wrap hidden md:flex">
             {tabs.map((tab) => (
-                <Button
+                <div
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    variant={activeTab === tab ? "secondary" : "ghost"}
-                    className="p-5"
+                    className={` transition-colors duration-200 hover:bg-white p-5 ${activeTab === tab ? "text-[#EB0A1E] border-b-2 border-[#EB0A1E]" : ""}`}
                 >
                     {tab}
-                </Button>
+                </div>
             ))}
         </nav>
     )
