@@ -26,6 +26,11 @@ export default function RootLayout({
       <body className={montserrat.className}>
         <Navbar />
         {children}
+        <footer>
+          <div className="w-full h-20 flex items-center justify-center bg-black text-white">
+            <p>2026 - EGO Tech Test</p>
+          </div>
+        </footer>
       </body>
     </html>
   );
