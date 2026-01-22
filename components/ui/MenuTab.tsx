@@ -10,7 +10,7 @@ const tabs: string[] = [
 export const MenuTab = () => {
     const pathname = usePathname()
 
-    const activeTab = pathname === '/' ? "Modelos": "Ficha de Modelo"
+    const activeTab = pathname === '/' ? "Modelos" : "Ficha de Modelo"
 
     return (
         <nav className="gap-5 flex-wrap hidden md:flex">
@@ -21,7 +21,9 @@ export const MenuTab = () => {
                         // onClick={() => setActiveTab(tab)}
                         className={`transition-colors duration-200 hover:bg-white p-5 ${activeTab === tab ? "text-[#EB0A1E] border-b-2 border-[#EB0A1E]" : ""}`}
                     >
-                        {tab}
+                        <a href={tab === "Modelos" ? "/" : ""}>
+                            {tab}
+                        </a>
                     </li>
                 ))}
             </ul>
