@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { usePathname } from 'next/navigation'
 
 const tabs: string[] = [
     "Modelos",
@@ -7,7 +8,14 @@ const tabs: string[] = [
 ]
 
 export const MenuTab = () => {
-    const [activeTab, setActiveTab] = useState<string>("Modelos")
+    const pathname = usePathname()
+    // const [activeTab, setActiveTab] = useState<string>("Modelos")
+
+    // useEffect(() => {
+    //     setActiveTab(pathname === '/' ? "Modelos" : "Ficha de Modelo")
+    // }, [pathname])
+
+    const activeTab = pathname === '/' ? "Modelos": "Ficha de Modelo"
 
     return (
         <nav className="gap-5 flex-wrap hidden md:flex">
@@ -15,7 +23,7 @@ export const MenuTab = () => {
                 {tabs.map((tab) => (
                     <li
                         key={tab}
-                        onClick={() => setActiveTab(tab)}
+                        // onClick={() => setActiveTab(tab)}
                         className={`transition-colors duration-200 hover:bg-white p-5 ${activeTab === tab ? "text-[#EB0A1E] border-b-2 border-[#EB0A1E]" : ""}`}
                     >
                         {tab}
