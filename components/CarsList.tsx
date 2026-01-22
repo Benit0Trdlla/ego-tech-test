@@ -80,7 +80,7 @@ export default function CarsList() {
 
             <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 my-5 py-3">
                 {filteredAndSortedCars.map((car) => (
-                    <Link href="#" key={car.id} className="group relative flex flex-col cursor-pointer">
+                    <Link href={`/Autos/Modelo/${car.id}`} key={car.id} className="group relative flex flex-col cursor-pointer">
                         <h3 className="text-center text-[28px]/[30px] font-bold mt-3 group-hover:text-[#EB0A1E]">{car.name}</h3>
 
                         <div className="flex gap-3 justify-center text-sm text-muted-foreground mt-2">
