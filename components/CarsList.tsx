@@ -92,7 +92,7 @@ export default function CarsList() {
                             <img
                                 src={car.photo || car.thumbnail}
                                 alt={car.name}
-                                className="w-full h-40 md:h-55 object-cover"
+                                className="w-full h-40 md:h-55 object-cover aspect-square group-hover:scale-105 transition-transform duration-300 ease-in-out"
                             />
                         </div>
 
