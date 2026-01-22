@@ -18,11 +18,11 @@ export default function Page() {
         </section>
         <section className="container mx-auto m-6 p-6">
           <div className="items-center justify-center grid grid-cols-1 md:grid-cols-2 grid-rows-1 gap-10 m-6 p-6">
-            <div className="order-2 text-balance">
+            <div className="order-2 md:order-1 text-balance">
               <h4 className="font-semibold pb-3 text-[20px]">Titulo 20px</h4>
               <p className="text-[16px]/[27px] py-5">Texto lorem ipsum dolor sit amet orem ipsum dolor sit amet. lorem ipsum dolor sit amet orem ipsum dolor sit amet lorem ipsum dolor sit amet orem ipsum dolor sit amet. AL dorsd</p>
             </div>
-            <Image className="order-1" src="/IMG.png" width={559} height={320} alt="Modelo" />
+            <Image className="order-1 md:order-2" src="/IMG.png" width={559} height={320} alt="Modelo" />
           </div>
         </section>
         <section className="container mx-auto m-6 p-6">

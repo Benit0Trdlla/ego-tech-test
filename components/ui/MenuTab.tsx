@@ -9,11 +9,6 @@ const tabs: string[] = [
 
 export const MenuTab = () => {
     const pathname = usePathname()
-    // const [activeTab, setActiveTab] = useState<string>("Modelos")
-
-    // useEffect(() => {
-    //     setActiveTab(pathname === '/' ? "Modelos" : "Ficha de Modelo")
-    // }, [pathname])
 
     const activeTab = pathname === '/' ? "Modelos": "Ficha de Modelo"
 
