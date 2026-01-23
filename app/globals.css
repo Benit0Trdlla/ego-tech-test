@@ -15,6 +15,10 @@ body {
     grid-template-rows: auto 1fr auto;
 }
 
+@theme {
+  --breakpoint-xs: 30rem;
+}
+
 @theme inline {
     --radius-sm: calc(var(--radius) - 4px);
     --radius-md: calc(var(--radius) - 2px);

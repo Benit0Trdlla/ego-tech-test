@@ -71,11 +71,13 @@ export default function CarsList() {
     if (error) return <div className="text-center py-10">Error al cargar los autos.</div>;
     if (!cars || cars.length === 0) return <div className="text-center py-10">No hay autos disponibles.</div>;
 
+    const yarisHatchbackStyles = "sm:h-25 md:h-[110px] lg:h-[150px] xl:h-[190px] mt-5 md:mt-4 lg:mt-5 xl:mt-0"
+
     return (
         <>
             <div className="py-5 border-b-2 flex items-center justify-between gap-4">
                 <FilterBy value={filterBy} onValueChange={setFilterBy} />
-                <OrderBy value={sortBy} onValueChange={setSortBy} /> 
+                <OrderBy value={sortBy} onValueChange={setSortBy} />
             </div>
 
             <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 my-5 py-3">
@@ -92,7 +94,7 @@ export default function CarsList() {
                             <img
                                 src={car.photo || car.thumbnail}
                                 alt={car.name}
-                                className="w-full h-40 sm:h-35 md:h-40 lg:h-55 object-cover aspect-square group-hover:scale-105 transition-transform duration-300 ease-in-out"
+                                className={`w-full h-40 xs:h-55 ${car.name === "Yaris Hatchback" ? yarisHatchbackStyles : "sm:h-35 md:h-40 lg:h-55"}  object-cover aspect-square group-hover:scale-105 transition-transform duration-300 ease-in-out`}
                             />
                         </div>
 
