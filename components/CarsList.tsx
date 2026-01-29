@@ -6,20 +6,8 @@ import OrderBy from '@/components/OrderBy';
 import FilterBy from './FilterBy';
 import { Button } from "@/components/ui/button";
 import { getAllCars } from '@/app/data/getAllCars';
+import type { Car } from '@/types/car.types';
 import useSWR from 'swr';
-
-type Car = {
-    id: number;
-    name: string;
-    segment: string;
-    year: number;
-    price: number;
-    thumbnail: string;
-    photo: string;
-};
-
-// type SortOption = "" | "asc" | "desc" | "new" | "old";
-// type FilterOption = "" | "Autos" | "Pickups y Comerciales" | "SUVs y Crossovers";
 
 const FILTER_RULES: { [key: string]: string[] | undefined } = {
     "Autos": ["Sedan", "Hatchback"],

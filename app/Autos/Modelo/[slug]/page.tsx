@@ -1,14 +1,7 @@
 import Image from "next/image"
 import { getCar } from "@/app/data/getCar"
 import CarouselSizes from "@/components/Carrousel/Carrousel";
-
-export type CarCarouselItem = {
-  name?: string;
-  title: string;
-  description?: string;
-  content: string;
-  image: string;
-};
+import type { CarCarouselItem } from "@/types/car.types";
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const { slug } = await params

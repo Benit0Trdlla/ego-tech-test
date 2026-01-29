@@ -1,8 +1,8 @@
 "use client";
 import { useState, useEffect } from "react"
-import { type CarouselApi } from "@/components/ui/carousel"
 import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/card"
-import type { CarCarouselItem } from "@/app/Autos/Modelo/[slug]/page";
+import { type CarouselApi } from "@/components/ui/carousel"
+import { type CarCarouselItem } from "@/types/car.types";
 import Image from "next/image"
 import {
     Carousel,
