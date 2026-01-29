@@ -5,7 +5,7 @@ import Link from "next/link";
 import OrderBy from '@/components/OrderBy';
 import FilterBy from './FilterBy';
 import { Button } from "@/components/ui/button";
-import { getCars } from '@/app/data/getCars';
+import { getAllCars } from '@/app/data/getAllCars';
 import useSWR from 'swr';
 
 type Car = {
@@ -28,7 +28,7 @@ const FILTER_RULES: { [key: string]: string[] | undefined } = {
 };
 
 export default function CarsList() {
-    const { data: cars, error, isLoading } = useSWR<Car[]>("cars", getCars);
+    const { data: cars, error, isLoading } = useSWR<Car[]>("cars", getAllCars);
     const [sortBy, setSortBy] = useState<string>("");
     const [filterBy, setFilterBy] = useState<string>("");
 
